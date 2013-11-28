@@ -3,5 +3,5 @@
 	
 	echo "<br/>";
 	
-	echo "First repo -";
+	echo "First repo - drone.io test";
 ?>
