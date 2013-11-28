@@ -1,6 +1,17 @@
 language: php
 php:
-  - 5.5
-  - 5.4
-  - 5.3
+  - "5.3"
+branches:
+only:
+  - master
 
+env:
+  - DB=mysql
+  - DB=mysqli
+  - DB=pdo/mysql
+
+before_script:
+  - composer install --dev --no-progress
+  - sh -c "if [ '$DB' = 'mysql' ] || [ '$DB' = 'mysqli' ] || [ '$DB' = 'pdo/mysql' ]; then mysql -e 'create database IF NOT EXISTS ci_test;'; fi"
+
+script: phpunit --coverage-text --configuration tests/travis/$DB.phpunit.xml
