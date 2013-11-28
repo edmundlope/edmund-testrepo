@@ -14,4 +14,4 @@ before_script:
   - composer install --dev --no-progress
   - sh -c "if [ '$DB' = 'mysql' ] || [ '$DB' = 'mysqli' ] || [ '$DB' = 'pdo/mysql' ]; then mysql -e 'create database IF NOT EXISTS ci_test;'; fi"
 
-script: phpunit --coverage-text --configuration tests/travis/$DB.phpunit.xml
+script: phpunit --coverage-text --configuration tests/$DB.phpunit.xml
